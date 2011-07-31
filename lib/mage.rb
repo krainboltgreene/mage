@@ -1,3 +1,3 @@
-module Mage
-  # Your code goes here...
-end
+require 'mage/version'
+
+require 'mage/profile'
