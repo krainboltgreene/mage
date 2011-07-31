@@ -15,6 +15,7 @@ Gem::Specification.new do |spec|
     Things like Operating System, CPU type and herts, RAM size, and more!
     You only pull in what you want, and no more.
   }
+  spec.add_dependency('ox', '>= 1.2.5')
 
   spec.files         = `git ls-files`.split("\n")
   spec.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
