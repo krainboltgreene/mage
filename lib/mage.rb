@@ -1,0 +1,3 @@
+module Mage
+  # Your code goes here...
+end
