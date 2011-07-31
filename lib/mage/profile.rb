@@ -11,7 +11,7 @@ module Mage
       end
     end
 
-    def system
+    def os
       @machine.operating_system
     end
 
@@ -21,5 +21,6 @@ module Mage
 
     def cpu
       @machine.processor
+    end
   end
 end

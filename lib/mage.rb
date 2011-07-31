@@ -1,4 +1,6 @@
-require 'nokogiri'
+require 'yaml'
+
+require 'awesome_print'
 
 require 'mage/version'
 require 'mage/profile'
