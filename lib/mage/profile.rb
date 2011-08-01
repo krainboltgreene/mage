@@ -1,9 +1,9 @@
 module Mage
   class Profile
-    attr_accessor :machine
+    attr_accessor :profile
 
     def initialize
-      @machine = case `uname -s`.chomp
+      @profile = case `uname -s`.chomp
       when 'Darwin'
         Darwin.new
       when 'Linux'
@@ -12,15 +12,15 @@ module Mage
     end
 
     def os
-      @machine.operating_system
+      @profile.os
     end
 
     def ram
-      @machine.memory
+      @profile.ram
     end
 
     def cpu
-      @machine.processor
+      @profile.cpu
     end
   end
 end
