@@ -3,20 +3,23 @@ module Mage
     attr_reader :hardware, :software
 
     def initialize
-      @hardware = YAML.load(`system_profiler SPHardwareDataType`.chomp)["Hardware"]["Hardware Overview"]
-      @software = YAML.load(`system_profiler SPSoftwareDataType`.chomp)["Software"]["System Software Overview"]
+      @hardware_data = YAML.load(`system_profiler SPHardwareDataType`.chomp)["Hardware"]["Hardware Overview"]
+      @software_data = YAML.load(`system_profiler SPSoftwareDataType`.chomp)["Software"]["System Software Overview"]
     end
 
-    def operating_system
-      "#{@system_version} (#{@kernal_version}, #{@kernel_bit})"
+    def os
+      "#{system_version} (#{kernal_version}, #{kernel_bit})"
     end
 
-    def processor
-      "#{@processor_name} (#{@processor_speed}, #{@cores} cores)"
+    def cpu
+      "#{processor_name} (#{processor_speed}, #{core_count} cores)"
+    end
+
+    def ram
+      "#{total_memory}"
     end
   end
 end
-
 
 # SPNetworkDataType
 # SPSoftwareDataType

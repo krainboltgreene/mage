@@ -1,55 +1,55 @@
 module Mage
   class Darwin
     def model_name
-      @hardware["Model Name"]
+      @hardware_data["Model Name"]
     end
 
     def model_id
-      @hardware["Model Name"]
+      @hardware_data["Model Name"]
     end
 
     def processor_name
-      @hardware["Processor Name"]
+      @hardware_data["Processor Name"]
     end
 
     def processor_speed
-      @hardware[""]
+      @hardware_data["Processor Speed"]
     end
 
     def processor_count
-      @hardware["Number Of Processors"]
+      @hardware_data["Number Of Processors"]
     end
 
     def core_count
-      @hardware["Total Number Of Cores"]
+      @hardware_data["Total Number Of Cores"]
     end
 
     def l2_cache
-      @hardware["L2 Cache"]
+      @hardware_data["L2 Cache"]
     end
 
-    def memory
-      @hardware["Memory"]
+    def total_memory
+      @hardware_data["Memory"]
     end
 
     def bus_speed
-      @hardware["Bus Speed"]
+      @hardware_data["Bus Speed"]
     end
 
     def boot_rom
-      @hardware["Boot ROM Version"]
+      @hardware_data["Boot ROM Version"]
     end
 
     def smc_version
-      @hardware["SMC Version (system)"]
+      @hardware_data["SMC Version (system)"]
     end
 
     def serial_number
-      @hardware["Serial Number (system)"]
+      @hardware_data["Serial Number (system)"]
     end
 
     def uuid
-      @hardware["Hardware UUID"]
+      @hardware_data["Hardware UUID"]
     end
   end
 end
