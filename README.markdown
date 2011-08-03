@@ -25,27 +25,24 @@ puts "CPU: " + my_computer.cpu                # => "Intel Core 2 Duo"
 puts "Memory: " + my_computer.ram             # => "2 GB"
 ```
 
-And these are only the beginning.
+And this is just the start as nearly any information you could want from a machine is right at your finger tips, via Mage Profile.
+
 
 Installing
 ----------
 
 **Requirements**
 
-1. Requirement One
-2. Requirement Two
-3. Requirement Three
+1. Ruby MRI 1.9.2
+2. RubyGems 1.6.7
+3. Mac OSX 1.6.8 **or** Windows Vista (Will add more as they get added)
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Like any other gem, all you have to do is either use `gem install` or add it to your `Gemfile`:
 
-```
-$ gem install projectname
-$ do-other-thing
+``` ruby
+source :rubygems
+
+gem "mage", "0.4.8"
 ```
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
