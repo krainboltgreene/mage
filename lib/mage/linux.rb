@@ -3,13 +3,13 @@ module Mage
     def initialize
     end
 
-    def operating_system
+    def os
     end
 
-    def memory
+    def cpu
     end
 
-    def processor
+    def ram
     end
   end
 end
