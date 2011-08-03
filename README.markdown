@@ -3,99 +3,98 @@ mage
 
 **Stable Version**: 0.4.8
 
-mage is a simple and easy way to get the details of your platform, like cpu hertz, memory size, and more.
-Despite the name, mage attempts to avoid magical means and make the api intuitive, easily understood.
-mage also only loads exactly what you need, when you need it, and never more.
+`mage` is a ruby gem that can gather all of your machine's details.
+Things that `mage` gathers: CPU details, Total Memory, Operating System version, and more.
+Despite the name `mage` attempts to avoid magic, and keeps a very simple API.
+If you know what you're looking for, you can use the name of the detail straight on the machine object.
+No obscure dsl or details to wade into.
+
 
 Examples
 --------
 
-Using mage works like most well designed libraries:
-
 ``` ruby
+require 'mage'
+
 my_computer = Mage::Profile.new
+
+p my_computer.os            #=> "Mac OS X 10.6.8 (10K549) (Darwin 10.8.0, 32-bit)"
+p my_computer.cpu           #=> "Intel Core 2 Duo (2.4 GHz, 2 cores)"
+p my_computer.ram           #=> "2 GB"
 ```
 
-This will auto-magically gather all the information about your machine that you might want to know.
-Now we can use very easy to remember methods on this object to get specific information:
+The above example uses the ease to remember combinations of details.
+However you can make specific calls about the machine and `mage` will return them in Ruby native objects.
+Here is an example of the more specific calls:
 
 ``` ruby
-puts "Operating System: " + my_computer.os    # => "Mac OS X 10.6.8"
-puts "CPU: " + my_computer.cpu                # => "Intel Core 2 Duo"
-puts "Memory: " + my_computer.ram             # => "2 GB"
+require 'mage'
+
+my_computer = Mage::Profile.new
+
+case my_computer.platform
+  when "Darwin"
+    p my_computer.machine.time_since_boot.class     #=> Fixnum
+    p my_computer.machine.processor_speed           #=> "2.4 GHz"
+  when "Windows"
+    p my_computer.machine.windows_directory         #=> "C:\Windows"
+    p my_computer.machine.product_id                #=> "89578-OEM-7332157-00061"
+end
 ```
 
-And these are only the beginning.
 
 Installing
 ----------
 
 **Requirements**
 
-1. Requirement One
-2. Requirement Two
-3. Requirement Three
+1. Ruby MRI 1.9.2
+2. RubyGems 1.6.7
+3. Mac OSX 1.6.8 **or** Windows Vista (Will add more as they get added)
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Like any other gem, all you have to do is either use `gem install` or add it to your `Gemfile`:
 
-```
-$ gem install projectname
-$ do-other-thing
+``` ruby
+source :rubygems
+
+gem "mage", "0.4.8"
 ```
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
+That's all you have to do.
 
 **Testing**
 
-To make sure you did everything right, just do the following:
+To make sure you did everything right do the following:
 
-```
-$ projectname -v
-> what-should-appear
+``` ruby
+$ ruby -e "require 'mage'; x = Darwin::Profile.new ; x.platform"
+> "Darwin" or "Windows"
 ```
 
 
 Issues & Documentation
 ----------------------
 
-* [Documentation]()
-* [Issues]()
+* [Documentation](http://krainboltgreene.github.com/mage/documentation)
+* [Issues](https://github.com/krainboltgreene/mage/issues)
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+We welcome any pull requests or commits that improve `mage`.
 
 
 Changelog
 ---------
 
-**v1.0.0**
+**v0.4.8**
 
-* Duis aute irure dolor
-* Officia deserunt mollit
-* Sunt in culpa qui
-* Labore et dolore magna aliqua
+* Adding the README, COPYRIGHT, and other important documents
+* Creating the website
+* Adding a project RVMRC file
+* Fixing old comments on the example
 
-**v0.9.0**
+**v0.4.0**
 
-* Duis aute irure dolor
-* Officia deserunt mollit
-* Sunt in culpa qui
-* Labore et dolore magna aliqua
+* Adding support for Windows
+* Refactoring the Windows and Darwin classes
 
 
 Contributing
@@ -119,17 +118,15 @@ Contributing
 Credits
 -------
 
-* [name-of-person](mailto: email@email.com)
-* [name-of-person](mailto: email@email.com)
-* [name-of-person](mailto: email@email.com)
-* [name-of-person](mailto: email@email.com)
-* [name-of-person](mailto: email@email.com)
+* [Sandro Turriate](https://github.com/sandro), for inspiring me to make a benchmarking gem, and thus a system profiler
+* [Puppet Labs](https://github.com/puppetlabs), for making `facter`, a system profiling gem for `puppet`
+* [Opscode, Inc.](https://github.com/opscode), for making `ohai`, a system profiling gem for `chef`
 
 
 License
 -------
 
-Copyright (c) YEAR YOUR NAME
+Copyright (c) 2011 Kurtis Rainbolt-Greene
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
