@@ -32,10 +32,6 @@ module Mage
 
     end
 
-    def product_id
-
-    end
-
     def original_install_date
 
     end
@@ -44,39 +40,11 @@ module Mage
 
     end
 
-    def system_manufacturer
-
-    end
-
-    def system_model
-
-    end
-
-    def system_type
-
-    end
-
-    def processors
-
-    end
-
-    def bios_version
-
-    end
-
     def windows_directory
 
     end
 
     def system_directory
-
-    end
-
-    def boot_device
-
-    end
-
-    def system_locale
 
     end
 
@@ -89,30 +57,6 @@ module Mage
     end
 
     def time_zone
-
-    end
-
-    def total_physical_memory
-
-    end
-
-    def available_physical_memory
-
-    end
-
-    def page_max_size
-
-    end
-
-    def page_available
-
-    end
-
-    def page_in_use
-
-    end
-
-    def page_location
 
     end
 
