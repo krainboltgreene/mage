@@ -1,26 +1,24 @@
-module Mage
-  class Windows
-    attr_reader :data
+class Mage::Windows
+  attr_reader :data
 
-    def initialize
-      systeminfo = `systeminfo`.chomp
-      systeminfo.gsub!(/\nHotfix.*/,'')
-      systeminfo.gsub!(/\d Processor\(s\) Installed./,'')
-      systeminfo.gsub!(/\[\d+\]:/,'-')
-      @data = YAML.load(systeminfo)
-    end
+  def initialize
+    profile = `systeminfo`.chomp
+    profile.gsub!(/\nHotfix.*/,'')
+    profile.gsub!(/\d Processor\(s\) Installed./,'')
+    profile.gsub!(/\[\d+\]:/,'-')
+    @data = YAML.load(profile)
+  end
 
-    def os
-      "#{system_version} (#{kernal_version}, #{kernel_bit})"
-    end
+  def os
+    "#{system_version} (#{kernal_version}, #{kernel_bit})"
+  end
 
-    def cpu
-      "#{processor_name} (#{processor_speed}, #{core_count} cores)"
-    end
+  def cpu
+    "#{processor_name} (#{processor_speed}, #{core_count} cores)"
+  end
 
-    def ram
-      "#{total_memory}"
-    end
+  def ram
+    "#{total_memory}"
   end
 end
 

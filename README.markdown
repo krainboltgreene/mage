@@ -1,8 +1,6 @@
 mage
 ====
 
-**Stable Version**: 0.4.8
-
 `mage` is a ruby gem that can gather all of your machine's details.
 Things that `mage` gathers: CPU details, Total Memory, Operating System version, and more.
 Despite the name `mage` attempts to avoid magic, and keeps a very simple API.
@@ -83,18 +81,6 @@ We welcome any pull requests or commits that improve `mage`.
 
 Changelog
 ---------
-
-**v0.4.8**
-
-* Adding the README, COPYRIGHT, and other important documents
-* Creating the website
-* Adding a project RVMRC file
-* Fixing old comments on the example
-
-**v0.4.0**
-
-* Adding support for Windows
-* Refactoring the Windows and Darwin classes
 
 
 Contributing
