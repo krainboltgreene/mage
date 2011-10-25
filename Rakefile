@@ -1,30 +1,31 @@
 require 'rubygems'
 require 'bundler'
+require 'yard'
+require 'ruby-debug'
+require 'rake/testtask'
 require 'bundler/gem_tasks'
-Bundler::GemHelper.install_tasks
 
 # Make sure the Bundler gem is installed by trying to use the setup method.
+Bundler::GemHelper.install_tasks
 begin
-  Bundler.setup(:default, :development)
-rescue Bundler::BundlerError => e
-  $stderr.puts e.message
+  Bundler.setup :default, :development
+rescue Bundler::BundlerError => error
+  $stderr.puts error.message
   $stderr.puts "Run `bundle install` to install missing gems"
-  exit e.status_code
+  exit error.status_code
 end
 
-# Pull in the rake testing task and test libs.
-require 'rake'
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
+# Setup `rake test` to run all of the tests in the test directory.
+Rake::TestTask.new :test do |config|
+  config.libs << "test"
+  config.pattern = 'test/**/test_*.rb'
+  config.verbose = true
+  config.warning = true
 end
 
-# Pull in the YARD documentation gem with taks.
-require 'yard'
-YARD::Rake::YardocTask.new do |t|
-  t.files = FileList['lib/**/*.rb']
+# Setup YARD's documentation task with the files in lib.
+YARD::Rake::YardocTask.new :doc do |config|
+  config.files = Dir['lib/**/*.rb']
 end
 
 task :default => :test
