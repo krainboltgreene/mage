@@ -1,6 +1,6 @@
 require 'mage'
 
-my_computer = Mage::Profile.new
+my_computer = Mage.build
 
 case my_computer.platform
   when "Darwin"
