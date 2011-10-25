@@ -12,7 +12,7 @@ module Mage
   end
 end
 
-require_relative 'version'
-require_relative 'profile'
-require_relative 'darwin'
-require_relative 'linux'
+require_relative 'mage/version'
+require_relative 'mage/interface'
+require_relative 'mage/darwin'
+require_relative 'mage/linux'

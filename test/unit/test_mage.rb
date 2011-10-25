@@ -1,4 +1,9 @@
+require 'ruby-debug'
 require 'minitest/autorun'
+require 'simplecov'
+
+SimpleCov.start
+
 require 'mage'
 
 class TestMage < MiniTest::Unit::TestCase

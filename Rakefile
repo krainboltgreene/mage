@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'bundler'
 require 'yard'
-require 'ruby-debug'
 require 'rake/testtask'
 require 'bundler/gem_tasks'
 
@@ -17,7 +16,7 @@ end
 
 # Setup `rake test` to run all of the tests in the test directory.
 Rake::TestTask.new :test do |config|
-  config.libs << "test"
+  config.libs << "test/helper"
   config.pattern = 'test/**/test_*.rb'
   config.verbose = true
   config.warning = true
