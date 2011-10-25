@@ -1,7 +1,7 @@
 mage
 ====
 
-**Stable Version**: 0.4.8
+**Stable Version**: 0.0.1
 
 `mage` is a ruby gem that can gather all of your machine's details.
 Things that `mage` gathers: CPU details, Total Memory, Operating System version, and more.
