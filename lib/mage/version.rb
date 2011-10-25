@@ -1,3 +1,3 @@
 module Mage
-  VERSION = "0.4.8"
+  VERSION = "0.0.1"
 end

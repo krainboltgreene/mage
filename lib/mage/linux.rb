@@ -1,15 +1,13 @@
-module Mage
-  class Linux
-    def initialize
-    end
+class Mage::Linux
+  extend Mage::Interface
 
-    def os
-    end
+  attr_accessor :data
 
-    def cpu
-    end
+  def initialize
+    data = YAML.load prepared ``
+  end
 
-    def ram
-    end
+  def prepared(profile)
+    profile.chomp!
   end
 end

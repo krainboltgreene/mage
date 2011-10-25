@@ -1,25 +1,20 @@
-module Mage
-  class Darwin
-    attr_reader :hardware, :software
+class Mage::Darwin
+  extend Mage::Interface
 
-    def initialize
-      @hardware_data = YAML.load(`system_profiler SPHardwareDataType`.chomp)["Hardware"]["Hardware Overview"]
-      @software_data = YAML.load(`system_profiler SPSoftwareDataType`.chomp)["Software"]["System Software Overview"]
-    end
+  attr_accessor :data
 
-    def os
-      "#{system_version} (#{kernal_version}, #{kernel_bit})"
-    end
+  def initialize
+    data = YAML.load prepared `system_profiler`
+  end
 
-    def cpu
-      "#{processor_name} (#{processor_speed}, #{core_count} cores)"
-    end
-
-    def ram
-      "#{total_memory}"
-    end
+  def prepared(profile)
+    profile.chomp!
+    profile.gsub!(/\[\d+\]:/,'-')
   end
 end
+
+require_relative 'darwin/hardware'
+require_relative 'darwin/software'
 
 # SPNetworkDataType
 # SPSoftwareDataType
