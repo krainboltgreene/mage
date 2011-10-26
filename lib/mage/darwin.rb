@@ -1,5 +1,5 @@
 class Mage::Darwin
-  extend Mage::Interface
+  include Mage::Interface
 
   attr_accessor :data
 
