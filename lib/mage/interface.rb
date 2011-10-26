@@ -1,6 +1,6 @@
 module Mage::Interface
   def os
-    "#{system_version} (#{kernal_version}, #{kernel_bit})"
+    "#{system_version} (#{kernel_version}, #{kernel_bit})"
   end
 
   def cpu
