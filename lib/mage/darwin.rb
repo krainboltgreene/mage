@@ -4,7 +4,7 @@ class Mage::Darwin
   attr_accessor :data
 
   def initialize
-    data = YAML.load prepared `system_profiler`
+    @data = YAML.load prepared `system_profiler SPSoftwareDataType SPNetworkDataType`
   end
 
   def prepared(profile)
