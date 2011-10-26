@@ -17,9 +17,8 @@ module Mage
     end
 
     def computer_name
-      @software_data["Computer Name"]
-	  system 'hostname'
-	end
+      @software_data["Computer Name"] = system 'hostname'
+    end
 
     def user_name
       @software_data["User Name"]
