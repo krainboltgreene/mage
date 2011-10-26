@@ -1,8 +1,8 @@
-require 'ruby-debug'
+#require 'ruby-debug'
 require 'minitest/autorun'
-require 'simplecov'
+#require 'simplecov'
 
-SimpleCov.start
+#SimpleCov.start
 
 require 'mage'
 
