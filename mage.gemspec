@@ -21,14 +21,12 @@ Gem::Specification.new do |spec|
 
   spec.version        = Mage::VERSION
 
-  spec.add_development_dependency 'minitest', '2.6.2' if RUBY_VERSION =~ /1\.8/
+  if RUBY_VERSION =~ /1\.8/
+    spec.add_development_dependency 'minitest', '2.6.2'
+    spec.add_dependency 'backports', '2.3.0'
+  end
   spec.add_development_dependency 'yard', '0.7.3'
   spec.add_development_dependency 'kramdown', '0.13.3'
-  #spec.add_development_dependency 'simplecov', '0.5.4' if RUBY_VERSION =~ /1\.9/
-  #spec.add_development_dependency 'ruby-debug19', '0.11.6' if RUBY_VERSION =~ /1\.9/ || ENV['TRAVIS']
-  spec.add_dependency 'backports', '2.3.0' if RUBY_VERSION =~ /1\.8/
   spec.add_dependency 'rake', '0.9.2.2'
 
 end
-
-
