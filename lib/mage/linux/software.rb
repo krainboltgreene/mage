@@ -38,7 +38,7 @@ module Mage
     end
 
     def time_since_boot
-
+      system("cat /proc/uptime | awk '{print $1}'")
     end
   end
 end
