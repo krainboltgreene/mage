@@ -20,15 +20,15 @@ module Mage
     end
 
     def processor_count
-      hardware_data["Number Of Processors"]
+      hardware_data["Number of Processors"]
     end
 
     def core_count
-      hardware_data["Total Number Of Cores"]
+      hardware_data["Total Number of Cores"]
     end
 
     def l2_cache
-      hardware_data["L2 Cache"]
+      hardware_data["L2 Cache (per Core)"]
     end
 
     def total_memory
