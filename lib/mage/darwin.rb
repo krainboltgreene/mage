@@ -9,7 +9,8 @@ class Mage::Darwin
 
   def prepared(profile)
     profile.chomp!
-    #profile.gsub!(/\[\d+\]:/,'-')
+    profile.gsub!(/\[\d+\]:/,'-')
+    profile
   end
 end
 
