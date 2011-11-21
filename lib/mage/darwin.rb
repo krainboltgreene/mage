@@ -4,12 +4,13 @@ class Mage::Darwin
   attr_accessor :data
 
   def initialize
-    @data = YAML.load prepared `system_profiler SPSoftwareDataType SPNetworkDataType`
+    @data = YAML.load prepared `system_profiler SPSoftwareDataType SPHardwareDataType`
   end
 
   def prepared(profile)
     profile.chomp!
     profile.gsub!(/\[\d+\]:/,'-')
+    profile
   end
 end
 
