@@ -1,58 +1,34 @@
 module Mage
   class Darwin
+
     def hardware_data
       @data["Hardware"]["Hardware Overview"]
     end
-    def model_name
-      hardware_data["Model Name"]
-    end
 
-    def model_id
-      hardware_data["Model Name"]
-    end
-
-    def processor_name
-      hardware_data["Processor Name"]
-    end
-
-    def processor_speed
-      hardware_data["Processor Speed"]
-    end
-
-    def processor_count
-      hardware_data["Number of Processors"]
+    def generate_hardware
+      hardware_data.each do |k,v|
+        k = k.gsub(' ', '_').gsub('-','_')
+        index = k.rindex('(')
+        if index != nil && index > 0
+          k = k[0,index-1]
+        end
+        @methods << k.downcase
+        self.metaclass.send(:define_method, k.downcase.to_sym) do
+          v.to_s
+        end
+      end
     end
 
     def core_count
-      hardware_data["Total Number of Cores"]
-    end
-
-    def l2_cache
-      hardware_data["L2 Cache (per Core)"]
+      if self.respond_to?('total_number_of_cores')
+        self.total_number_of_cores
+      end
     end
 
     def total_memory
-      hardware_data["Memory"]
-    end
-
-    def bus_speed
-      hardware_data["Bus Speed"]
-    end
-
-    def boot_rom
-      hardware_data["Boot ROM Version"]
-    end
-
-    def smc_version
-      hardware_data["SMC Version (system)"]
-    end
-
-    def serial_number
-      hardware_data["Serial Number (system)"]
-    end
-
-    def uuid
-      hardware_data["Hardware UUID"]
+      if self.respond_to?('memory')
+        self.memory
+      end
     end
   end
 end
