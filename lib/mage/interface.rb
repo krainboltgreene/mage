@@ -1,4 +1,6 @@
 module Mage::Interface
+  attr_reader :methods
+
   def os
     "#{system_version} (#{kernel_version}, #{kernel_bit})"
   end
@@ -9,5 +11,11 @@ module Mage::Interface
 
   def ram
     "#{total_memory}"
+  end
+
+  def metaclass
+    class << self
+      self
+    end
   end
 end
