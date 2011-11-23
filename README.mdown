@@ -14,7 +14,7 @@ Examples
 ``` ruby
 require 'mage'
 
-my_computer = Mage::Profile.new
+my_computer = Mage.build
 
 p my_computer.os            #=> "Mac OS X 10.6.8 (10K549) (Darwin 10.8.0, 32-bit)"
 p my_computer.cpu           #=> "Intel Core 2 Duo (2.4 GHz, 2 cores)"
@@ -28,16 +28,9 @@ Here is an example of the more specific calls:
 ``` ruby
 require 'mage'
 
-my_computer = Mage::Profile.new
-
-case my_computer.platform
-  when "Darwin"
-    p my_computer.machine.time_since_boot.class     #=> Fixnum
-    p my_computer.machine.processor_speed           #=> "2.4 GHz"
-  when "Windows"
-    p my_computer.machine.windows_directory         #=> "C:\Windows"
-    p my_computer.machine.product_id                #=> "89578-OEM-7332157-00061"
-end
+my_computer = Mage.build 
+p my_computer.time_since_boot.class     #=> Fixnum
+p my_computer.processor_speed           #=> "2.4 GHz"
 ```
 
 
@@ -65,8 +58,8 @@ That's all you have to do.
 To make sure you did everything right do the following:
 
 ``` ruby
-$ ruby -e "require 'mage'; x = Darwin::Profile.new ; x.platform"
-> "Darwin" or "Windows"
+ruby -e "require 'mage'; x = Mage.build; p x.os"
+"Mac OS X 10.7.2 (11C74) (Darwin 11.2.0, 64-bit)"
 ```
 
 
