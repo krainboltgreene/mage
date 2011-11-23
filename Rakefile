@@ -14,7 +14,7 @@ rescue Bundler::BundlerError => error
   exit error.status_code
 end
 
-# Setup `rake test` to run all of the tests in the test directory.
+desc "Setup `rake test` to run all of the tests in the test directory."
 Rake::TestTask.new :test do |config|
   config.libs << "test/helper"
   config.pattern = 'test/**/test_*.rb'
@@ -22,7 +22,7 @@ Rake::TestTask.new :test do |config|
   config.warning = true
 end
 
-# Setup YARD's documentation task with the files in lib.
+desc "Setup YARD's documentation task with the files in lib."
 YARD::Rake::YardocTask.new :doc do |config|
   config.files = Dir['lib/**/*.rb']
 end
