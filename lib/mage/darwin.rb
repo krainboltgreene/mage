@@ -1,3 +1,6 @@
+require_relative 'darwin/hardware'
+require_relative 'darwin/software'
+
 class Mage::Darwin
   include Mage::Interface
 
@@ -5,6 +8,9 @@ class Mage::Darwin
 
   def initialize
     @data = YAML.load prepared `system_profiler SPSoftwareDataType SPHardwareDataType`
+    @methods = []
+    generate_software
+    generate_hardware
   end
 
   def prepared(profile)
@@ -13,7 +19,3 @@ class Mage::Darwin
     profile
   end
 end
-
-require_relative 'darwin/hardware'
-require_relative 'darwin/software'
-
