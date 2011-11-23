@@ -23,11 +23,11 @@ class TestMage < MiniTest::Unit::TestCase
     assert(Mage::Linux, "The Mage::Linux Class doesn't exist")
   end
 
-  def test_mage_windows_class_exists
-    assert(Mage::Windows, "The Mage::Windows Class doesn't exist")
-  end
+  #def test_mage_windows_class_exists
+  #  assert(Mage::Windows, "The Mage::Windows Class doesn't exist")
+  #end
 
   def test_os_classes_have_interface
-    assert_send([Mage::Darwin.new, :os])
+    assert_send([Mage.build, :os])
   end
 end
