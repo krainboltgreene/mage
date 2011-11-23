@@ -1,4 +1,4 @@
-require 'yaml'
+require 'yajl'
 require 'require_relative' if RUBY_VERSION =~ /1\.8/
 
 module Mage
