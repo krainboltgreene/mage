@@ -1,62 +1,21 @@
-module Mage
-  class Darwin
-    attr_reader :hardware, :software
+require_relative 'darwin/hardware'
+require_relative 'darwin/software'
 
-    def initialize
-      @hardware_data = YAML.load(`system_profiler SPHardwareDataType`.chomp)["Hardware"]["Hardware Overview"]
-      @software_data = YAML.load(`system_profiler SPSoftwareDataType`.chomp)["Software"]["System Software Overview"]
-    end
+class Mage::Darwin
+  include Mage::Interface
 
-    def os
-      "#{system_version} (#{kernal_version}, #{kernel_bit})"
-    end
+  attr_accessor :data
 
-    def cpu
-      "#{processor_name} (#{processor_speed}, #{core_count} cores)"
-    end
+  def initialize
+    @data = YAML.load prepared `system_profiler SPSoftwareDataType SPHardwareDataType`
+    @methods = []
+    generate_software
+    generate_hardware
+  end
 
-    def ram
-      "#{total_memory}"
-    end
+  def prepared(profile)
+    profile.chomp!
+    profile.gsub!(/\[\d+\]:/,'-')
+    profile
   end
 end
-
-# SPNetworkDataType
-# SPSoftwareDataType
-# SPParallelATADataType
-# SPAudioDataType
-# SPBluetoothDataType
-# SPCardReaderDataType
-# SPDiagnosticsDataType
-# SPDiscBurningDataType
-# SPEthernetDataType
-# SPFibreChannelDataType
-# SPFireWireDataType
-# SPDisplaysDataType
-# SPHardwareRAIDDataType
-# SPMemoryDataType
-# SPPCIDataType
-# SPParallelSCSIDataType
-# SPPowerDataType
-# SPPrintersDataType
-# SPSASDataType
-# SPSerialATADataType
-# SPThunderboltDataType
-# SPUSBDataType
-# SPAirPortDataType
-# SPFirewallDataType
-# SPNetworkLocationDataType
-# SPModemDataType
-# SPNetworkVolumeDataType
-# SPWWANDataType
-# SPApplicationsDataType
-# SPDeveloperToolsDataType
-# SPExtensionsDataType
-# SPFontsDataType
-# SPFrameworksDataType
-# SPLogsDataType
-# SPManagedClientDataType
-# SPPrefPaneDataType
-# SPStartupItemDataType
-# SPSyncServicesDataType
-# SPUniversalAccessDataType

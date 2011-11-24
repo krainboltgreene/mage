@@ -1,15 +1,20 @@
-module Mage
-  class Linux
-    def initialize
-    end
+class Mage::Linux
+  include Mage::Interface
 
-    def os
-    end
+  attr_accessor :data
 
-    def cpu
-    end
+  def initialize
+    @data = YAML.load prepared systeminfo
+  end
 
-    def ram
-    end
+  def prepared(profile)
+    profile.chomp!
+  end
+
+  def systeminfo
+  	`lsb_release -d | sed 's/:\t/\t: /g' && cat /proc/cpuinfo && cat /proc/meminfo`
   end
 end
+
+require_relative 'linux/hardware'
+require_relative 'linux/software'
