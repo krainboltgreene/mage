@@ -2,8 +2,8 @@
 require File.expand_path('../lib/mage/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Kurtis Rainbolt-Greene"]
-  gem.email         = ["kurtisrainboltgreene@gmail.com"]
+  gem.authors       = ["Kurtis Rainbolt-Greene" "Fernando Ortiz"]
+  gem.email         = ["kurtisrainboltgreene@gmail.com" "eratos2000@gmail.com"]
   gem.description   = 'mage is an interface for your hardware & software profile'
   gem.summary       = %q{    mage is a great little gem for getting your system profile.
     Things like Operating System, CPU type and herts, RAM size, and more!
