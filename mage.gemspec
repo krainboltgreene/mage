@@ -18,10 +18,11 @@ Gem::Specification.new do |gem|
   gem.version       = Mage::VERSION
 
   if RUBY_PLATFORM =~ /1\.8/
-    gem.add_development_dependency 'minitest', '2.6.2'
     gem.add_dependency 'backports', '2.3.0'
   end
-
+  
+  gem.add_development_dependency 'require_relative', '1.0.3'
+  gem.add_development_dependency 'minitest', '2.6.2'
   gem.add_development_dependency 'yard', '0.7.3'
   gem.add_development_dependency 'kramdown', '0.13.3'
   gem.add_development_dependency 'rake', '0.9.2.2'
