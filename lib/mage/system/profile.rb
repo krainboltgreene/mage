@@ -50,7 +50,7 @@ module Mage
       if self.respond_to?('processor0')
         idx = self.processor0.rindex('@')
         if idx != nil && idx > 0
-          self.processor0[idx+1]
+          self.processor0[idx+1,self.processor0.size].strip
         else
           self.processor0
         end
