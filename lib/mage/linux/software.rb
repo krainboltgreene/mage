@@ -1,3 +1,5 @@
+require 'facter'
+
 module Mage
   class Linux
     def system_version
@@ -5,40 +7,38 @@ module Mage
     end
 
     def kernel_version
-      `uname -r`.chomp!
+      Facter.kernelversion
     end
-
+    
     def boot_drive
-      
+      # todo: figure out how to get this in linux. 
     end
 
     def boot_mode
-      
+      # whut.
     end
 
     def computer_name
-      `hostname`.chomp!
+      Facter.hostname
     end
 
     def user_name
-      `logname`.chomp!
+      Facter.id
     end
 
     def secure_virtual_memory
-      
+      # todo: ask kurtis what he meant by this
     end
 
     def kernel_bit
-      machine = `uname -m`.chomp!
-      if machine == 'x86_64'
-        "64-bit"
-      else
-        "32-bit"
-      end
+      Facter.architecture
     end
-
+    
     def time_since_boot
-
+      Facter.uptime
+      Facter.uptime_days
+      Facter.uptime_seconds
+      #todo: pick one and do it, until then we'll roll w/this.
     end
   end
 end
