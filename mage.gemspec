@@ -29,5 +29,9 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rack', '1.3.5'
   #gem.add_dependency 'yajl-ruby', '1.1.0'
   gem.add_dependency 'methadone', '0.3.4'
+  # the following are all needed for things to really "work".
+  gem.add_development_dependency 'facter', '1.6.4'
+  gem.add_dependency 'facter', '1.6.4'
+  gem.add_runtime_dependency 'facter', '1.6.4'
 end
 
